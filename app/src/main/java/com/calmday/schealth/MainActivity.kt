@@ -9,56 +9,46 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.ui.NavigationUI.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import org.w3c.dom.Text
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var rView: RecyclerView
-    lateinit var addButton: Button
-    var adapter: FoodAdapter = FoodAdapter(mutableListOf())
+    lateinit var bottomNavigationView: BottomNavigationView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        rView = findViewById(R.id.foodDetails)
-        addButton = findViewById(R.id.addFood)
-        addButton.setOnClickListener {
-            addFood()
+        val firstFragment=LogsFragment()
+        val secondFragment=DashboardFragment()
+        val thirdFragment=RecordFoodFragment()
+
+
+        bottomNavigationView = findViewById(R.id.bottomNavigationView)
+    setCurrentFragment(firstFragment)
+        bottomNavigationView.setOnNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.logs->setCurrentFragment(firstFragment)
+                R.id.dashboard->setCurrentFragment(secondFragment)
+                R.id.addFood->setCurrentFragment(thirdFragment)
+
+            }
+            true
         }
 
 
-
-        rView.adapter = adapter
-        rView.layoutManager = LinearLayoutManager(this)
-        loadData()
     }
-    fun loadData() {
-            var foods: List<Food> = listOf()
 
-            val db = Room.databaseBuilder(
-                applicationContext,
-                AppDatabase::class.java, "calorieDb.v1"
-            ).allowMainThreadQueries().build()
-
-            val foodDao = db.foodDao()
-            foods = foodDao.getAll()
-            adapter.addAll(foods.toMutableList())
-
-
-    }
-    fun addFood() {
-        val intent = Intent(this, RecordFoodActivity::class.java)
-        ContextCompat.startActivity(
-            this,
-            intent,
-            null
-        )
-    }
+    private fun setCurrentFragment(fragment: Fragment)=
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.activity_main_nav_host_fragment,fragment)
+            commit()
+        }
 }
 
 @Entity

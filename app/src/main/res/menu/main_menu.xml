@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/logs"
+        android:title="Logs" />
+<!--        android:icon="@drawable/ic_baseline_filter_1_24"-->
+    <item
+        android:id="@+id/dashboard"
+        android:title="DashBoard" />
+    <item
+        android:id="@+id/addFood"
+        android:title="Add Food" />
+<!--        android:icon="@drawable/ic_baseline_filter_2_24"-->
+
+</menu>

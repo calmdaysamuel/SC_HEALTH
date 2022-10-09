@@ -3,9 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Samue/StudioProjects/SCHealth/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/Samue/StudioProjects/SCHealth/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/Samue/StudioProjects/SCHealth/app/src/main/res/layout/add_food.xml" value="0.22" />
         <entry key="..\:/Users/Samue/StudioProjects/SCHealth/app/src/main/res/layout/food_detail.xml" value="0.33469202898550726" />
+        <entry key="..\:/Users/Samue/StudioProjects/SCHealth/app/src/main/res/layout/fragment_dashboard.xml" value="0.1" />
+        <entry key="..\:/Users/Samue/StudioProjects/SCHealth/app/src/main/res/layout/fragment_logs.xml" value="0.1" />
+        <entry key="..\:/Users/Samue/StudioProjects/SCHealth/app/src/main/res/layout/fragment_record_food.xml" value="0.1" />
+        <entry key="..\:/Users/Samue/StudioProjects/SCHealth/app/src/main/res/menu/main_menu.xml" value="0.1" />
       </map>
     </option>
   </component>
